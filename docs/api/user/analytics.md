@@ -4,4 +4,6 @@
 
 ## Log UX event
 
-`POST /event`
+```
+POST /event
+```

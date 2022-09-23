@@ -2,4 +2,6 @@
 
 ## Submit a client-side error report
 
-`POST /errors/report`
+```
+POST /errors/report
+```
