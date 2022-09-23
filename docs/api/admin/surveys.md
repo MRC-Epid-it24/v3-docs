@@ -2,66 +2,98 @@
 
 ## List surveys
 
-`GET /`
+```
+GET /
+```
 
 ## Validate survey ID
 
-`POST /validate-id`
+```
+POST /validate-id
+```
 
 ## Create survey
 
-`POST /`
+```
+POST /
+```
 
 ## Get survey data
 
-`GET /:surveyId`
+```
+GET /:surveyId
+```
 
 ## Update survey
 
-`PATCH /:surveyId`
+```
+PATCH /:surveyId
+```
 
 ## Delete survey
 
-`DELETE /:surveyId`
+```
+DELETE /:surveyId
+```
 
 ## Add roles to users (possibly duplicated, no relevance to survey)
 
-`POST /:surveyId/acl`
+```
+POST /:surveyId/acl
+```
 
 ## Remove roles from users (possibly duplicated, no relevance to survey)
 
-`DELETE /:surveyId/acl`
+```
+DELETE /:surveyId/acl
+```
 
 ### Survey user management
 
 ## List survey staff users
 
-`GET /:surveyId/users/staff`
+```
+GET /:surveyId/users/staff
+```
 
 ## Create or update staff users
 
-`POST /:surveyId/users/staff`
+```
+POST /:surveyId/users/staff
+```
 
 ## List survey respondent users
 
-`GET /:surveyId/users/respondents`
+```
+GET /:surveyId/users/respondents
+```
 
 ## Create or update respondent users
 
-`POST /:surveyId/users/respondents`
+```
+POST /:surveyId/users/respondents
+```
 
 ## Upload respondent users from CSV
 
-`POST /:surveyId/users/respondents/upload-csv`
+```
+POST /:surveyId/users/respondents/upload-csv
+```
 
 ## Upload notification schedule CSV
 
-`POST /:surveyId/users/notifications/upload-csv`
+```
+POST /:surveyId/users/notifications/upload-csv
+```
 
 ## Delete users (should be merged with global)
 
-`DELETE /:surveyId/users`
+```
+DELETE /:surveyId/users
+```
 
 ## Create respondent user with physical profile (age, weight etc.)
 
-`POST /:surveyId/users/respondents/with-physical-data`
+```
+POST /:surveyId/users/respondents/with-physical-data
+```

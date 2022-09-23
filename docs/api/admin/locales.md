@@ -2,8 +2,12 @@
 
 ## List locales
 
-`GET /admin/locales`
+```
+GET /admin/locales
+```
 
 ## Get locale information
 
-`GET /admin/locales/:id`
+```
+GET /admin/locales/:id
+```
