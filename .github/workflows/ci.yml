@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Docs lint & build
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Repository checkout
+        uses: actions/checkout@v3.0.2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 6
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm lint
+      
+      - name: Build
+        run: pnpm build
+

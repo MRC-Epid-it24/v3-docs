@@ -1,0 +1,12 @@
+:root {
+  --vp-c-accent: #B32700;
+  --vp-c-brand: #B32700;
+  --vp-c-brand-light: #B32700;
+  --vp-c-brand-lighter: #B32700;
+  --vp-c-brand-dark: #B32700;
+  --vp-c-brand-darker: #B32700;
+}
+
+a {
+  font-weight: 600;
+}

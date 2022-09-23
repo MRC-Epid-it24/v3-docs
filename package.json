@@ -1,0 +1,36 @@
+{
+  "name": "v3-docs",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "packageManager": "pnpm@6.34.0",
+  "scripts": {
+    "prepare": "pnpm simple-git-hooks",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs",
+    "lint": "prettier --write docs/**/*.md"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.md": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MRC-Epid-it24/v3-docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MRC-Epid-it24/v3-docs/issues"
+  },
+  "homepage": "https://v3.docs.intake24.org",
+  "devDependencies": {
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "simple-git-hooks": "^2.8.0",
+    "vitepress": "^1.0.0-alpha.15"
+  }
+}
