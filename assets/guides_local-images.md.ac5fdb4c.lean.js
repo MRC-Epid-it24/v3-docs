@@ -1,0 +1,1 @@
+import{_ as s,c as e,o as a,a as n}from"./app.309a8d3d.js";const h=JSON.parse('{"title":"Local images database","description":"","frontmatter":{},"headers":[],"relativePath":"guides/local-images.md"}'),o={name:"guides/local-images.md"},t=n("",20),l=[t];function p(c,r,i,d,u,g){return a(),e("div",null,l)}const C=s(o,[["render",p]]);export{h as __pageData,C as default};

@@ -1,0 +1,22 @@
+import{_ as s,c as e,o as a,a as n}from"./app.309a8d3d.js";const h=JSON.parse('{"title":"Local images database","description":"","frontmatter":{},"headers":[],"relativePath":"guides/local-images.md"}'),o={name:"guides/local-images.md"},t=n(`<h1 id="local-images-database" tabindex="-1">Local images database <a class="header-anchor" href="#local-images-database" aria-hidden="true">#</a></h1><p><strong>1. Prepare a directory for the image database</strong></p><p>The requirements for the directory are:</p><ul><li>files from that directory should be able to served by an HTTP server, e.g. nginx,</li><li>if write access is required (for uploading new portion size images using the admin tool) the directory must be writable by the <code>intake24-api-server</code> process (i.e. <code>intake24-api-server</code> user by default)</li></ul><p><strong>2. Extract a snapshot of the image database to the image directory</strong></p><p><strong>3. Set up an HTTP server to serve static files from that directory</strong></p><p>Make sure that:</p><ul><li><p>the URLs don&#39;t clash with the rest of Intake24 URLs. Use either a special prefix (e.g., <code>/images</code>) or a different port.</p></li><li><p>the base protocol (<code>http</code> or <code>https</code>) is the same as the protocol used by the survey website.</p></li></ul><p>The most basic <code>nginx</code> configuration (simply added to the API server&#39;s nginx configuration) is as follows:</p><div class="language-"><button class="copy"></button><span class="lang"></span><pre><code><span class="line"><span style="color:#A6ACCD;">    location /images/ {</span></span>
+<span class="line"><span style="color:#A6ACCD;">      alias /var/run/intake24-images/;</span></span>
+<span class="line"><span style="color:#A6ACCD;">    }</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><p><strong>4. In the API server&#39;s <code>application.conf</code>, add the following section:</strong></p><div class="language-"><button class="copy"></button><span class="lang"></span><pre><code><span class="line"><span style="color:#A6ACCD;">intake24 {</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;">  ...</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;">  images {</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;">  ...</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span>
+<span class="line"><span style="color:#A6ACCD;">    localStorage {</span></span>
+<span class="line"><span style="color:#A6ACCD;">      baseDirectory = &quot;(path to directory in the local filesystem)&quot;</span></span>
+<span class="line"><span style="color:#A6ACCD;">      urlPrefix = &quot;(external URL that should be used to access the images)&quot;</span></span>
+<span class="line"><span style="color:#A6ACCD;">    }</span></span>
+<span class="line"><span style="color:#A6ACCD;">  }</span></span>
+<span class="line"><span style="color:#A6ACCD;">}</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><p>e.g.</p><div class="language-"><button class="copy"></button><span class="lang"></span><pre><code><span class="line"><span style="color:#A6ACCD;">    localStorage {</span></span>
+<span class="line"><span style="color:#A6ACCD;">      baseDirectory = &quot;/var/run/intake24-images&quot;</span></span>
+<span class="line"><span style="color:#A6ACCD;">      urlPrefix = &quot;http://192.168.56.2/images&quot;</span></span>
+<span class="line"><span style="color:#A6ACCD;">    }</span></span>
+<span class="line"><span style="color:#A6ACCD;"></span></span></code></pre></div><p><strong>5. In the API server&#39;s <code>application.conf</code>, replace the line</strong></p><p><code>play.modules.enabled += &quot;modules.S3StorageReadOnlyModule&quot;</code></p><p>(or <code>play.modules.enabled += &quot;modules.S3StorageModule&quot;</code> depending on the configuration)</p><p>with</p><p><code>play.modules.enabled += &quot;modules.LocalStorageModule&quot;</code></p><p><strong>6. (Optional) delete the <code>intake24.images.S3Storage</code> block from the API server&#39;s <code>application.conf</code></strong></p>`,20),l=[t];function p(c,r,i,d,u,g){return a(),e("div",null,l)}const C=s(o,[["render",p]]);export{h as __pageData,C as default};
